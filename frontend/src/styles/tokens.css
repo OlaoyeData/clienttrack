@@ -1,0 +1,178 @@
+:root {
+  /* Gradient (hero band, primary CTA) */
+  --grad-1: #ff7a45;
+  --grad-2: #e23e7a;
+  --grad-3: #6c3cd9;
+  --gradient: linear-gradient(115deg, var(--grad-1) 0%, var(--grad-2) 52%, var(--grad-3) 100%);
+
+  /* Neutrals */
+  --ink: #14162b;
+  --body: #4b4f6b;
+  --muted: #8a8fa8;
+  --surface: #ffffff;
+  --bg: #f4f3f9;
+  --border: #ebe9f4;
+
+  /* Accents (task/progress states) */
+  --accent-purple: #7c4dff;
+  --accent-coral: #ff5a6e;
+  --accent-blue: #3e8bff;
+  --accent-green: #17b26a;
+  --accent-amber: #f5a524;
+
+  /* Type */
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shape */
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --shadow-card: 0 20px 50px -20px rgba(20, 22, 43, 0.16);
+  --shadow-soft: 0 8px 24px -12px rgba(20, 22, 43, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; color: var(--body); }
+
+button, input, select, textarea { font-family: inherit; }
+
+a { color: inherit; text-decoration: none; }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--grad-3);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover:not(:disabled) { box-shadow: 0 12px 28px -10px rgba(20,22,43,0.35); }
+
+.btn-gradient {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 14px 30px -12px rgba(226, 62, 122, 0.55);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover:not(:disabled) { border-color: var(--grad-3); }
+
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.field .hint { font-size: 12px; color: var(--muted); }
+.field input,
+.field select,
+.field textarea {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14.5px;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--grad-3);
+  outline: none;
+}
+.field textarea { resize: vertical; min-height: 96px; }
+.field .error { font-size: 12.5px; color: var(--accent-coral); }
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.badge-not_started { background: #f1f0fa; color: var(--muted); }
+.badge-in_progress { background: #eaf1ff; color: var(--accent-blue); }
+.badge-completed { background: #e7f8ee; color: var(--accent-green); }
+.badge-on_hold { background: #fff3e0; color: var(--accent-amber); }
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #edecf6;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
